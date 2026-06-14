@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5183)",
+      "Bash(npx --yes chromium-cli --version)",
+      "Bash(npx --yes playwright --version)",
+      "Read(//Users/nishchay_s/Library/Caches/**)",
+      "Bash(mkdir -p /tmp/pwtest)",
+      "Read(//tmp/**)",
+      "Bash(npm install *)"
+    ]
+  }
+}

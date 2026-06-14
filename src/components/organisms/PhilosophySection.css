@@ -1,0 +1,12 @@
+.phil-section{background:var(--surf2)}
+
+.phil-trust-chain{
+  background:var(--surf);border:1.5px solid var(--surf4);border-radius:24px;
+  padding:48px 32px;margin-bottom:32px;position:relative;overflow:hidden;
+}
+
+.phil-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+@media(max-width:900px){
+  .phil-principles{grid-template-columns:1fr}
+}

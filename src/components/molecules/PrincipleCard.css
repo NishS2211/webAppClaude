@@ -1,0 +1,17 @@
+.phil-card{
+  background:var(--surf);border:1.5px solid var(--surf4);
+  border-radius:16px;padding:24px;cursor:default;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.phil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pc,var(--brand));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.phil-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--pc,var(--brand))}
+.phil-card:hover::before{transform:scaleX(1)}
+.phil-card-icon{
+  width:42px;height:42px;border-radius:11px;
+  background:var(--pc-bg,var(--brand-l));color:var(--pc,var(--brand));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:16px;
+}
+.phil-card-title{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:6px;letter-spacing:-.2px}
+.phil-card-text{font-size:13px;color:var(--ink3);line-height:1.6}

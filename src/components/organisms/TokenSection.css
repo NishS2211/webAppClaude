@@ -1,0 +1,331 @@
+.token-section {
+  background: var(--surf);
+}
+
+/* The big savings visual */
+.tok-hero {
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.tok-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--brand) 0%, transparent 60%);
+  filter: blur(80px);
+  opacity: .4;
+  pointer-events: none;
+}
+.tok-hero-left {
+  position: relative;
+  z-index: 1;
+}
+.tok-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.tok-hero-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+.tok-hero-title .pct {
+  font-size: 64px;
+  background: linear-gradient(135deg, var(--cyan), var(--brand));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tok-hero-sub {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, .6);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.tok-hero-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tok-bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.tok-bar-label-l {
+  font-size: 11px;
+  color: rgba(255, 255, 255, .6);
+  font-weight: 600;
+}
+.tok-bar-label-r {
+  font-size: 11px;
+  color: #fff;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+}
+.tok-bar-track {
+  height: 10px;
+  background: rgba(255, 255, 255, .06);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.tok-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
+}
+.tok-bar-fill.before {
+  background: linear-gradient(90deg, var(--rose) 0%, var(--amber) 100%);
+}
+.tok-bar-fill.after {
+  background: linear-gradient(90deg, var(--green) 0%, var(--cyan) 100%);
+}
+
+.tok-hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tok-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, .2) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.tok-circle::before,
+.tok-circle::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px dashed rgba(99, 102, 241, .2);
+}
+.tok-circle::before {
+  inset: 0;
+  animation: rotate 20s linear infinite;
+}
+.tok-circle::after {
+  inset: 24px;
+  border-style: dotted;
+  animation: rotate 15s linear infinite reverse;
+}
+.tok-circle-inner {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--cyan));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 48px rgba(99, 102, 241, .4);
+  z-index: 1;
+}
+.tok-circle-pct {
+  font-size: 64px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.tok-circle-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .8);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Token techniques grid */
+.tok-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.tok-tech-card {
+  background: var(--surf);
+  border: 1.5px solid var(--surf4);
+  border-radius: 14px;
+  padding: 22px;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative;
+}
+.tok-tech-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--tc, var(--brand));
+}
+.tok-tech-card.active {
+  border-color: var(--tc, var(--brand));
+  box-shadow: 0 0 0 3px var(--tc-l, var(--brand-l));
+}
+.ttc-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.ttc-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.ttc-info {
+  flex: 1;
+}
+.ttc-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+  letter-spacing: -.2px;
+}
+.ttc-saving {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: var(--green);
+}
+.ttc-toggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s;
+  flex-shrink: 0;
+}
+.tok-tech-card.active .ttc-toggle {
+  transform: rotate(45deg);
+}
+.ttc-desc {
+  font-size: 12.5px;
+  color: var(--ink3);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.ttc-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease-out;
+}
+.ttc-detail.open {
+  max-height: 600px;
+  margin-top: 14px;
+}
+.ttc-detail-inner {
+  background: var(--surf2);
+  border: 1px solid var(--surf4);
+  border-radius: 10px;
+  padding: 18px;
+}
+.ttc-vs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.ttc-vs-box {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, .85);
+  line-height: 1.5;
+  position: relative;
+}
+.ttc-vs-box::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.ttc-vs-box.bad::before {
+  content: '❌ COSTLY';
+  background: var(--rose);
+  color: #fff;
+}
+.ttc-vs-box.good::before {
+  content: '✅ EFFICIENT';
+  background: var(--green);
+  color: #fff;
+}
+.ttc-vs-box .cmt { color: rgba(255, 255, 255, .4); }
+.ttc-vs-box .acc { color: var(--cyan-m); }
+.ttc-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ttc-tip {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+}
+.ttc-tip::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--tc, var(--brand));
+  font-weight: 800;
+}
+
+/* Token color themes */
+.tc-1 { --tc: var(--brand); --tc-l: var(--brand-l); }
+.tc-2 { --tc: var(--cyan); --tc-l: var(--cyan-l); }
+.tc-3 { --tc: var(--green); --tc-l: var(--green-l); }
+.tc-4 { --tc: var(--amber); --tc-l: var(--amber-l); }
+.tc-5 { --tc: var(--purple); --tc-l: var(--purple-l); }
+
+@media (max-width: 900px) {
+  .tok-tech-grid { grid-template-columns: 1fr; }
+  .tok-hero { grid-template-columns: 1fr; padding: 32px; }
+  .tok-hero-right { display: none; }
+}

@@ -1,0 +1,69 @@
+.ptc-canvas{position:relative;height:340px}
+
+.ptc-stage{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px}
+.ptc-stage-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--ink4)}
+.ptc-stage-box{
+  display:flex;align-items:center;justify-content:center;
+  border-radius:14px;background:var(--surf2);border:2px solid var(--surf4);
+  font-size:22px;transition:transform .25s,box-shadow .25s;
+}
+.ptc-stage-box:hover{transform:scale(1.05)}
+.ptc-ai{left:5%;top:50%;transform:translateY(-50%)}
+.ptc-ai .ptc-stage-box{width:84px;height:84px;background:linear-gradient(135deg,var(--cyan-l),var(--brand-l));border-color:var(--brand-m);font-size:36px;color:var(--brand)}
+.ptc-gate{left:50%;top:50%;transform:translate(-50%,-50%)}
+.ptc-gate .ptc-stage-box{width:124px;height:124px;background:linear-gradient(135deg,var(--ink),var(--ink2));border-color:var(--brand);box-shadow:0 8px 32px rgba(99,102,241,.3)}
+.ptc-gate .ptc-stage-box svg{width:50px;height:50px;stroke:#fff;fill:none;stroke-width:1.5}
+.ptc-prod{right:5%;top:50%;transform:translateY(-50%)}
+.ptc-prod .ptc-stage-box{width:84px;height:84px;background:linear-gradient(135deg,var(--green-l),var(--cyan-l));border-color:var(--green-m);font-size:32px;color:var(--green)}
+
+.ptc-skills{
+  position:absolute;left:18%;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:8px;
+}
+.ptc-skill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surf2);border:1px solid var(--surf4);
+  padding:6px 12px;border-radius:8px;
+  font-size:11px;font-weight:600;color:var(--ink2);
+  opacity:0;transform:translateX(-10px);
+  animation:skillSlide .5s ease-out forwards;
+}
+.ptc-skill:nth-child(1){animation-delay:.3s}
+.ptc-skill:nth-child(2){animation-delay:.45s}
+.ptc-skill:nth-child(3){animation-delay:.6s}
+.ptc-skill:nth-child(4){animation-delay:.75s}
+.ptc-skill:nth-child(5){animation-delay:.9s}
+@keyframes skillSlide{to{opacity:1;transform:translateX(0)}}
+.ptc-skill-dot{width:6px;height:6px;border-radius:50%;background:var(--brand)}
+
+.ptc-decision{
+  position:absolute;left:50%;top:74%;transform:translateX(-50%);
+  display:flex;gap:14px;align-items:center;
+}
+.ptc-dec-chip{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;padding:5px 11px;border-radius:14px;
+}
+.ptc-dec-yes{background:var(--green-l);color:var(--green);border:1px solid var(--green-m)}
+.ptc-dec-no{background:var(--rose-l);color:var(--rose);border:1px solid var(--rose-m)}
+
+.ptc-particle{
+  position:absolute;width:10px;height:10px;border-radius:50%;
+  background:var(--brand);box-shadow:0 0 12px var(--brand);
+  top:50%;left:14%;
+  animation:particleFlow 5s linear infinite;
+}
+@keyframes particleFlow{
+  0%{left:14%;background:var(--brand);box-shadow:0 0 12px var(--brand);opacity:1}
+  35%{left:46%;background:var(--brand)}
+  45%{left:50%;background:#fff;box-shadow:0 0 16px #fff;opacity:1}
+  55%{left:54%;background:var(--green)}
+  90%{left:86%;background:var(--green);box-shadow:0 0 12px var(--green);opacity:1}
+  100%{left:90%;opacity:0}
+}
+
+.ptc-line{
+  position:absolute;top:50%;left:14%;right:14%;height:2px;
+  background:linear-gradient(90deg,var(--brand-m) 0%,var(--brand) 45%,var(--ink) 50%,var(--green) 55%,var(--green-m) 100%);
+  transform:translateY(-50%);
+}

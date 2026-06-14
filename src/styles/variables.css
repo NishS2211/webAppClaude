@@ -1,0 +1,15 @@
+:root{
+  --ink:#0a0f1e;--ink2:#1a2238;--ink3:#475569;--ink4:#94a3b8;--ink5:#64748b;
+  --surf:#ffffff;--surf2:#f8fafd;--surf3:#f1f5f9;--surf4:#e2e8f0;
+  --brand:#6366f1;--brand-d:#4338ca;--brand-l:#eef2ff;--brand-m:#c7d2fe;
+  --cyan:#06b6d4;--cyan-l:#ecfeff;--cyan-m:#a5f3fc;
+  --green:#10b981;--green-l:#ecfdf5;--green-m:#a7f3d0;
+  --amber:#f59e0b;--amber-l:#fffbeb;--amber-m:#fde68a;
+  --rose:#f43f5e;--rose-l:#fff1f2;--rose-m:#fecdd3;
+  --purple:#8b5cf6;--purple-l:#f5f3ff;--purple-m:#ddd6fe;
+  --pink:#ec4899;--pink-l:#fdf2f8;--pink-m:#fbcfe8;
+  --r:14px;--r-sm:8px;--r-xs:6px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06);
+  --shadow-glow:0 0 0 1px rgba(99,102,241,.2),0 8px 32px rgba(99,102,241,.15);
+}
