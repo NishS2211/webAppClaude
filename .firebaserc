@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "aiweb-17791"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
