@@ -1,15 +1,15 @@
 footer {
-  background: #000;
+  background: var(--surf);
   padding: 36px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, .05);
+  border-top: 1.5px solid var(--surf4);
 }
 .footer-left .footer-brand {
   font-size: 16px;
   font-weight: 800;
-  color: #fff;
+  color: var(--ink);
   letter-spacing: -.3px;
   margin-bottom: 4px;
 }
@@ -21,11 +21,11 @@ footer {
 }
 .footer-left .footer-sub {
   font-size: 12px;
-  color: rgba(255, 255, 255, .35);
+  color: var(--ink4);
 }
 .footer-right {
   font-size: 11px;
-  color: rgba(255, 255, 255, .3);
+  color: var(--ink4);
   text-align: right;
   font-family: 'JetBrains Mono', monospace;
   line-height: 1.6;

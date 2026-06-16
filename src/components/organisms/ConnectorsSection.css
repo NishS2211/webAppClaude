@@ -16,242 +16,33 @@
   z-index: 1;
 }
 
-.conn-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.conn-card {
-  background: var(--surf);
+.conn-flow {
+  background: linear-gradient(180deg, var(--surf) 0%, var(--surf2) 100%);
   border: 1.5px solid var(--surf4);
-  border-radius: 16px;
-  padding: 22px;
-  cursor: pointer;
-  transition: all .3s;
-  position: relative;
-}
-.conn-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--cc, var(--brand));
-}
-.conn-card.active {
-  border-color: var(--cc, var(--brand));
-  box-shadow: 0 0 0 3px var(--cc-l, var(--brand-l)), var(--shadow-lg);
-}
-.conn-head {
+  border-radius: 24px;
+  padding: 40px;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-.conn-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: 900;
-  color: #fff;
-  background: var(--cc, var(--brand));
-}
-.conn-logo svg {
-  width: 24px;
-  height: 24px;
-}
-.conn-head-info {
-  flex: 1;
-  min-width: 0;
-}
-.conn-name {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--ink);
-  margin-bottom: 2px;
-}
-.conn-status {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .3px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--green);
-}
-.conn-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s ease-in-out infinite;
-}
-.conn-desc {
-  font-size: 12.5px;
-  color: var(--ink3);
-  line-height: 1.55;
-  margin-bottom: 14px;
-}
-.conn-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-.conn-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .3px;
-  padding: 3px 8px;
-  border-radius: 5px;
-  background: var(--cc-l, var(--brand-l));
-  color: var(--cc, var(--brand));
-}
-.conn-expand {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--cc, var(--brand));
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: var(--cc-l, var(--brand-l));
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-.conn-expand svg {
-  width: 14px;
-  height: 14px;
-  transition: transform .25s;
-}
-.conn-card.active .conn-expand svg {
-  transform: rotate(180deg);
 }
 
-/* Connector colors */
+/* Connector colors — also drive AnimatedFlowEdge particles and modal accents */
 .cc-figma { --cc: #F24E1E; --cc-l: #FEF2EE; }
 .cc-postman { --cc: #FF6C37; --cc-l: #FFF4EE; }
+.cc-jira { --cc: #0052CC; --cc-l: #E9F2FF; }
 .cc-drive { --cc: #1FA463; --cc-l: #ECFDF5; }
 .cc-gmail { --cc: #EA4335; --cc-l: #FEF2F2; }
 .cc-calendar { --cc: #4285F4; --cc-l: #EFF6FF; }
 .cc-code { --cc: #6366f1; --cc-l: #EEF2FF; }
 
-/* Expanded connector detail */
-.conn-detail {
-  grid-column: 1 / -1;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .45s ease-out;
-}
-.conn-detail.open {
-  max-height: 1800px;
-}
-.conn-detail-inner {
-  background: var(--surf);
-  border: 1.5px solid var(--cc, var(--brand));
-  border-radius: 18px;
-  padding: 32px;
-  margin-top: 8px;
-}
-.cdi-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-.cdi-logo-big {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: var(--cc, var(--brand));
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  flex-shrink: 0;
-}
-.cdi-logo-big svg {
-  width: 32px;
-  height: 32px;
-}
-.cdi-title {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--ink);
-  letter-spacing: -.5px;
-  margin-bottom: 4px;
-}
-.cdi-tagline {
-  font-size: 13px;
-  color: var(--ink3);
-  line-height: 1.5;
-}
+[data-theme='dark'] .cc-figma { --cc-l: rgba(242, 78, 30, .15); }
+[data-theme='dark'] .cc-postman { --cc-l: rgba(255, 108, 55, .15); }
+[data-theme='dark'] .cc-jira { --cc-l: rgba(0, 82, 204, .15); }
+[data-theme='dark'] .cc-drive { --cc-l: rgba(31, 164, 99, .15); }
+[data-theme='dark'] .cc-gmail { --cc-l: rgba(234, 67, 53, .15); }
+[data-theme='dark'] .cc-calendar { --cc-l: rgba(66, 133, 244, .15); }
+[data-theme='dark'] .cc-code { --cc-l: rgba(99, 102, 241, .15); }
 
-/* 3-step walkthrough */
-.cdi-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 28px;
-}
-.cdi-step {
-  background: var(--surf2);
-  border: 1px solid var(--surf4);
-  border-radius: 14px;
-  padding: 20px;
-  position: relative;
-}
-.cdi-step-num {
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--cc, var(--brand));
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cdi-step-title {
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--ink);
-  margin: 8px 0 8px;
-  letter-spacing: -.2px;
-}
-.cdi-step-text {
-  font-size: 12px;
-  color: var(--ink3);
-  line-height: 1.55;
-}
-.cdi-step-screen {
-  background: var(--ink);
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-top: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  color: rgba(255, 255, 255, .8);
-  line-height: 1.55;
-}
-.cdi-step-screen .cmt { color: rgba(255, 255, 255, .4); }
-.cdi-step-screen .acc { color: var(--cyan-m); }
-.cdi-step-screen .br { color: var(--cc, var(--brand)); }
-
-/* Prompt examples */
+/* Prompt examples (inside DetailModal) */
 .cdi-examples-title {
   font-size: 11px;
   font-weight: 800;
@@ -279,7 +70,7 @@
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  background: var(--ink);
+  background: var(--navy);
   border-radius: 10px;
   padding: 14px 16px;
 }
@@ -334,6 +125,5 @@
 }
 
 @media (max-width: 900px) {
-  .conn-grid { grid-template-columns: 1fr; }
-  .cdi-steps { grid-template-columns: 1fr; }
+  .conn-flow { padding: 24px 12px; }
 }

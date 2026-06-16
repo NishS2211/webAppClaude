@@ -1,0 +1,8 @@
+.trust-flow-canvas {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.trust-flow-canvas .react-flow__background {
+  opacity: .5;
+}

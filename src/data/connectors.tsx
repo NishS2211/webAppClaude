@@ -1,5 +1,5 @@
-import { SiFigma, SiPostman, SiGoogledrive, SiGmail, SiGooglecalendar } from 'react-icons/si';
-import { LuSquareTerminal, LuZap, LuTarget, LuFolderOpen, LuMailCheck, LuClock, LuRocket } from 'react-icons/lu';
+import { SiFigma, SiPostman, SiGoogledrive, SiGmail, SiGooglecalendar, SiJirasoftware } from 'react-icons/si';
+import { LuSquareTerminal, LuZap, LuTarget, LuFolderOpen, LuMailCheck, LuClock, LuRocket, LuListChecks } from 'react-icons/lu';
 import type { Connector } from '../types';
 
 export const connectors: Connector[] = [
@@ -61,9 +61,6 @@ export const connectors: Connector[] = [
         icon: <LuZap />,
         title: 'In my workflow',
         text: <>During Phase 4, instead of screenshotting and describing — I paste the Figma URL. Claude reads the actual component tree. <strong>Saves ~30 mins per screen.</strong></>,
-        bg: 'linear-gradient(135deg,#FEF2EE,#FFF7F4)',
-        borderColor: '#F24E1E',
-        titleColor: '#F24E1E',
       },
     },
   },
@@ -125,9 +122,67 @@ export const connectors: Connector[] = [
         icon: <LuTarget />,
         title: 'In my workflow',
         text: <>During Phase 3 planning, Claude pulls actual API contracts from Postman. Types match the real API — <strong>zero manual transcription</strong>, zero drift.</>,
-        bg: 'linear-gradient(135deg,#FFF4EE,#FFF9F3)',
-        borderColor: '#FF6C37',
-        titleColor: '#FF6C37',
+      },
+    },
+  },
+  {
+    id: 'jira',
+    colorClass: 'cc-jira',
+    name: 'Jira',
+    status: 'Connected',
+    logoBg: 'linear-gradient(135deg,#0052CC,#2684FF)',
+    logo: <SiJirasoftware />,
+    description: 'Claude reads your sprint board directly — pulls ticket descriptions, acceptance criteria, and scopes the work into plan.md.',
+    tags: ['Sprint Context', 'Ticket → plan.md'],
+    detail: {
+      title: 'Jira × Claude',
+      tagline: 'Tickets in, scoped plan.md out.',
+      steps: [
+        {
+          num: 1,
+          title: 'Connect',
+          text: 'Connectors → Jira → OAuth with your Atlassian account. Claude gets read access to your projects and boards.',
+          screen: (
+            <>
+              <span className="cmt">// Settings → Connectors</span><br />
+              <span className="acc">▸</span> Jira <span className="br">[Connect]</span>
+            </>
+          ),
+        },
+        {
+          num: 2,
+          title: 'Reference a ticket',
+          text: 'Paste a ticket key or URL. Claude reads the description, acceptance criteria, comments, and linked issues.',
+          screen: (
+            <>
+              <span className="cmt">// Mention:</span><br />
+              <span className="acc">HDFLEET-482</span><br />
+              jira.../browse/HDFLEET-482
+            </>
+          ),
+        },
+        {
+          num: 3,
+          title: 'Scope into plan.md',
+          text: 'Claude turns acceptance criteria into a checklist in plan.md — ready for the Phase 3 research → plan → annotate cycle.',
+          screen: (
+            <>
+              <span className="cmt">// plan.md</span><br />
+              <span className="acc">[ ]</span> AC1: validate VIN format<br />
+              <span className="acc">[ ]</span> AC2: block duplicate entries
+            </>
+          ),
+        },
+      ],
+      prompts: [
+        { text: <>"Read <span className="hl">HDFLEET-482</span> from Jira and turn its acceptance criteria into a plan.md checklist scoped to the inspection form."</> },
+        { text: <>"Summarize all open bugs in the <span className="hl">Fleet Tracking</span> board labeled <span className="hl">map</span> and group them by root cause."</> },
+        { text: <>"Compare my current branch against <span className="hl">HDFLEET-510</span>'s description — did I miss any acceptance criteria?"</> },
+      ],
+      useCase: {
+        icon: <LuListChecks />,
+        title: 'In my workflow',
+        text: <>Before Phase 3 starts, I point Claude at the ticket. <strong>Acceptance criteria become the plan.md checklist verbatim</strong> — nothing gets lost between PM and code.</>,
       },
     },
   },
@@ -190,9 +245,6 @@ export const connectors: Connector[] = [
         icon: <LuFolderOpen />,
         title: 'In my workflow',
         text: <>Phase 1 and 2 lean on this heavily. <strong>I never paste a PRD into chat anymore.</strong> Claude pulls fresh from Drive every time, so context is always current.</>,
-        bg: 'linear-gradient(135deg,#ECFDF5,#F0FDF4)',
-        borderColor: '#1FA463',
-        titleColor: '#1FA463',
       },
     },
   },
@@ -255,9 +307,6 @@ export const connectors: Connector[] = [
         icon: <LuMailCheck />,
         title: 'In my workflow',
         text: <>After client feedback emails, I ask Claude to extract change requests as a checklist. <strong>Paste straight into plan.md annotations.</strong> Zero manual extraction.</>,
-        bg: 'linear-gradient(135deg,#FEF2F2,#FFF5F5)',
-        borderColor: '#EA4335',
-        titleColor: '#EA4335',
       },
     },
   },
@@ -319,9 +368,6 @@ export const connectors: Connector[] = [
         icon: <LuClock />,
         title: 'In my workflow',
         text: <>Sprint planning gets honest. Instead of "I can do it by Friday" — Claude looks at my actual week and gives <strong>a number I can defend to PM.</strong></>,
-        bg: 'linear-gradient(135deg,#EFF6FF,#F0F9FF)',
-        borderColor: '#4285F4',
-        titleColor: '#4285F4',
       },
     },
   },
@@ -385,9 +431,6 @@ export const connectors: Connector[] = [
         icon: <LuRocket />,
         title: 'In my workflow',
         text: <>For multi-file refactors (MapScreen, filterStore), Claude Code is the difference between <strong>2-hour sessions and 2-day sessions.</strong> Hand it the plan, watch it work.</>,
-        bg: 'linear-gradient(135deg,#EEF2FF,#F0F4FF)',
-        borderColor: '#6366f1',
-        titleColor: '#6366f1',
       },
     },
   },

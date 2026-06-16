@@ -1,4 +1,4 @@
-import { LuArrowRight } from 'react-icons/lu';
+import { LuArrowRight, LuZap } from 'react-icons/lu';
 import { GradText } from '../atoms/GradText';
 import { AgendaCard } from '../molecules/AgendaCard';
 import { agendaItems } from '../../data/agenda';
@@ -14,7 +14,9 @@ export function Hero() {
       <div className="hero-inner">
         <div className="hero-eyebrow">
           <div className="hero-eyebrow-bar"></div>
-          React Native × Claude AI
+          React Native
+          <span className="hero-eyebrow-icon"><LuZap size={12} /></span>
+          Claude AI
         </div>
         <h1>
           AI builds fast.<br />You stay <GradText>accountable.</GradText>

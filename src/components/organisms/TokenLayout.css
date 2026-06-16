@@ -1,0 +1,222 @@
+/* ── Outer layout ── */
+.tl-layout {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.tl-layout::-webkit-scrollbar { display: none; }
+
+/* ── Stat boxes ── */
+.tl-stat {
+  flex-shrink: 0;
+  width: 170px;
+  border-radius: 18px;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+}
+.tl-stat-baseline {
+  background: linear-gradient(135deg, var(--rose-l), var(--amber-l));
+  border: 2px solid var(--rose);
+}
+[data-theme='dark'] .tl-stat-baseline {
+  background: linear-gradient(135deg, rgba(244,63,94,.12), rgba(245,158,11,.1));
+}
+.tl-stat-result {
+  background: linear-gradient(135deg, var(--green-l), var(--cyan-l));
+  border: 2px solid var(--green);
+}
+[data-theme='dark'] .tl-stat-result {
+  background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(6,182,212,.1));
+}
+.tl-stat-pct {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+.tl-stat-pct-red { color: var(--rose); }
+.tl-stat-pct-green { color: var(--green); }
+.tl-stat-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+.tl-stat-sub {
+  font-size: 11px;
+  color: var(--ink3);
+  line-height: 1.45;
+}
+
+/* ── Animated connector ── */
+.tl-connector {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 56px;
+  padding: 0 4px;
+}
+.tl-conn-track {
+  width: 100%;
+  height: 3px;
+  background: var(--surf4);
+  border-radius: 4px;
+  position: relative;
+  overflow: visible;
+}
+.tl-conn-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tl-conn-arrow {
+  opacity: 0.55;
+}
+
+/* ── Technique card grid ── */
+.tl-grid {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Individual technique card ── */
+.tl-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px 16px 14px;
+  background: var(--surf);
+  border: 1.5px solid var(--surf4);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: var(--shadow);
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  position: relative;
+}
+.tl-card:hover {
+  border-color: var(--tc, var(--brand));
+  box-shadow: var(--shadow-lg);
+}
+
+.tl-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+}
+
+.tl-card-body {
+  flex: 1;
+  min-width: 0;
+}
+.tl-card-name {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.tl-card-saving {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.3;
+}
+.tl-card-used {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.tl-card-used-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background: var(--surf2);
+  border: 1px solid var(--surf4);
+  color: var(--ink3);
+}
+
+.tl-card-arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Color themes (matching tc-1..tc-5) */
+.tc-1 { --tc: var(--brand); --tc-l: var(--brand-l); }
+.tc-2 { --tc: var(--cyan); --tc-l: var(--cyan-l); }
+.tc-3 { --tc: var(--green); --tc-l: var(--green-l); }
+.tc-4 { --tc: var(--amber); --tc-l: var(--amber-l); }
+.tc-5 { --tc: var(--purple); --tc-l: var(--purple-l); }
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .tl-layout {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+    gap: 12px;
+  }
+  .tl-stat {
+    width: 100%;
+    flex-direction: row;
+    gap: 16px;
+    padding: 16px 20px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .tl-stat-pct { font-size: 32px; }
+  .tl-connector {
+    flex-direction: row;
+    width: 100%;
+    height: 32px;
+    gap: 8px;
+  }
+  .tl-conn-track {
+    flex: 1;
+    width: auto;
+  }
+  .tl-conn-arrow {
+    transform: rotate(90deg);
+  }
+  .tl-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

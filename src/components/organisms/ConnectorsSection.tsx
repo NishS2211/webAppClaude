@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { Eyebrow, SectionTitle, SectionSubtitle } from '../atoms/SectionHeading';
 import { GradText } from '../atoms/GradText';
-import { ConnectorCard } from '../molecules/ConnectorCard';
-import { ConnectorDetail } from '../molecules/ConnectorDetail';
+import { Reveal } from '../atoms/Reveal';
+import { ConnectorsFlowCanvas } from './ConnectorsFlowCanvas';
+import { DetailModal, DetailModalHeader } from '../molecules/DetailModal';
+import { ConnectorStepsFlow } from '../molecules/ConnectorStepsFlow';
 import { connectors } from '../../data/connectors';
-import { useAccordion } from '../../hooks/useAccordion';
 import './ConnectorsSection.css';
 
 export function ConnectorsSection() {
-  const { isOpen, toggle } = useAccordion();
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const active = connectors.find((c) => c.id === activeId);
 
   return (
     <section className="conn-section" id="connectors">
@@ -16,23 +19,46 @@ export function ConnectorsSection() {
         <Eyebrow>03 · Power-Ups & Connectors</Eyebrow>
         <SectionTitle>Plug Claude into your <GradText>actual tools.</GradText></SectionTitle>
         <SectionSubtitle>
-          No more copy-pasting between apps. Each card below opens a 3-step setup guide and real example prompts you can steal today.
+          Claude sits at the center with a two-way connection to every tool — it reads from your apps and writes back. Click any connector to see real prompts you can use today.
         </SectionSubtitle>
 
-        <div className="conn-grid">
-          {connectors.map((connector) => (
-            <ConnectorCard
-              key={connector.id}
-              connector={connector}
-              isActive={isOpen(connector.id)}
-              onClick={() => toggle(connector.id)}
-            />
-          ))}
-          {connectors.map((connector) => (
-            <ConnectorDetail key={connector.id} connector={connector} isOpen={isOpen(connector.id)} />
-          ))}
-        </div>
+        <Reveal className="conn-flow">
+          <ConnectorsFlowCanvas onSelect={setActiveId} />
+        </Reveal>
       </div>
+
+      <DetailModal isOpen={!!active} onClose={() => setActiveId(null)} colorClass={active?.colorClass}>
+        {active && (
+          <>
+            <DetailModalHeader
+              icon={active.logo}
+              iconBg={active.logoBg}
+              title={active.detail.title}
+              tagline={active.detail.tagline}
+            />
+
+            <ConnectorStepsFlow steps={active.detail.steps} />
+
+            <div className="cdi-examples-title">Real prompts you can use today</div>
+            <div className="cdi-prompts">
+              {active.detail.prompts.map((prompt, i) => (
+                <div className="cdi-prompt" key={i}>
+                  <div className="cdi-prompt-tag">Prompt</div>
+                  <div className="cdi-prompt-text">{prompt.text}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="cdi-use">
+              <div className="cdi-use-icon">{active.detail.useCase.icon}</div>
+              <div>
+                <div className="cdi-use-title">{active.detail.useCase.title}</div>
+                <div className="cdi-use-text">{active.detail.useCase.text}</div>
+              </div>
+            </div>
+          </>
+        )}
+      </DetailModal>
     </section>
   );
 }

@@ -1,0 +1,152 @@
+.tf-card {
+  background: var(--surf);
+  border: 1.5px solid var(--surf4);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Baseline / result stat cards */
+.tf-baseline,
+.tf-result {
+  width: 200px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  padding: 20px;
+  cursor: default;
+}
+.tf-baseline {
+  background: linear-gradient(135deg, var(--rose-l), var(--amber-l));
+  border-color: var(--rose);
+}
+.tf-result {
+  background: linear-gradient(135deg, var(--green-l), var(--cyan-l));
+  border-color: var(--green);
+}
+
+.tf-stat {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+.tf-baseline .tf-stat { color: var(--rose); }
+.tf-result .tf-stat { color: var(--green); }
+
+.tf-stat-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink);
+  margin-top: 6px;
+}
+.tf-stat-sub {
+  font-size: 11.5px;
+  color: var(--ink3);
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+/* Technique cards */
+.tf-technique {
+  width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color .2s, box-shadow .2s;
+}
+.tf-technique:hover {
+  border-color: var(--tc, var(--brand));
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+.tf-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+}
+
+.tf-info {
+  flex: 1;
+  min-width: 0;
+}
+.tf-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.tf-saving {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.3;
+}
+
+.tf-used-in {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.tf-used-in-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background: var(--surf2);
+  border: 1px solid var(--surf4);
+  color: var(--ink3);
+}
+
+.tf-arrow {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--tc-l, var(--brand-l));
+  color: var(--tc, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .tf-baseline,
+  .tf-result {
+    width: 300px;
+    height: 90px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px 16px;
+  }
+  .tf-stat { font-size: 36px; }
+  .tf-stat-label,
+  .tf-stat-sub { margin-top: 0; }
+  .tf-baseline .tf-stat-sub,
+  .tf-result .tf-stat-sub { display: none; }
+
+  .tf-technique { width: 172px; padding: 13px; gap: 10px; }
+  .tf-saving { display: none; }
+  .tf-used-in { display: none; }
+}

@@ -1,0 +1,170 @@
+/* Shared small "focus view" cards used by Phases & Connectors drill-downs */
+
+/* point: icon + title + 1-line text */
+.dc-point {
+  width: 210px;
+  min-height: 108px;
+  gap: 8px;
+  cursor: default;
+}
+.dc-point-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dc-point-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  background: var(--vf-bg, var(--cc-l, var(--brand-l)));
+  color: var(--vf-c, var(--cc, var(--brand)));
+}
+
+/* rule: dark callout card for "why manual" / "non-negotiable" content */
+.dc-rule {
+  width: 280px;
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  cursor: default;
+}
+.dc-rule-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, .4);
+  margin-bottom: 8px;
+}
+.dc-rule-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .85);
+  line-height: 1.65;
+}
+.dc-rule-text strong { color: #fff; }
+
+/* step: numbered setup-step card */
+.dc-step {
+  width: 220px;
+  background: var(--surf2);
+  border: 1px solid var(--surf4);
+  border-radius: 14px;
+  padding: 16px;
+  position: relative;
+  box-shadow: var(--shadow);
+  cursor: default;
+}
+.dc-step-num {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--cc, var(--brand));
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dc-step-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 6px 0 6px;
+  letter-spacing: -.1px;
+}
+.dc-step-text {
+  font-size: 11.5px;
+  color: var(--ink3);
+  line-height: 1.5;
+}
+.dc-step-screen {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, .8);
+  line-height: 1.55;
+}
+.dc-step-screen .cmt { color: rgba(255, 255, 255, .4); }
+.dc-step-screen .acc { color: var(--cyan-m); }
+.dc-step-screen .br { color: var(--cc, var(--brand)); }
+
+/* prompt: terminal-styled example prompt card */
+.dc-prompt {
+  width: 280px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  cursor: default;
+}
+.dc-prompt-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  background: var(--cc, var(--brand));
+  color: #fff;
+  text-transform: uppercase;
+}
+.dc-prompt-text {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, .85);
+  line-height: 1.55;
+}
+.dc-prompt-text .hl { color: var(--cyan-m); }
+
+/* outcome: small decision chip (Accept / Modify / Reject) */
+.dc-outcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 140px;
+  height: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.dc-outcome-y {
+  background: rgba(16, 185, 129, .15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, .3);
+}
+.dc-outcome-n {
+  background: rgba(244, 63, 94, .15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, .3);
+}
+
+@media (max-width: 900px) {
+  .dc-point,
+  .dc-rule,
+  .dc-step,
+  .dc-prompt {
+    width: min(280px, calc(100vw - 64px));
+  }
+}

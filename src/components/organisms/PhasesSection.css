@@ -10,219 +10,24 @@
   margin-bottom: 32px;
 }
 
-/* Vertical phase flow */
-.vflow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  position: relative;
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-.vf-node {
-  width: 100%;
-  background: var(--surf);
-  border: 2px solid var(--vf-c, var(--brand));
-  border-radius: 14px;
-  padding: 18px 22px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  transition: all .25s;
-  position: relative;
-  box-shadow: var(--shadow);
-}
-.vf-node:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-glow);
-}
-.vf-node.active {
-  background: var(--vf-bg, var(--brand-l));
-  transform: translateX(8px);
-  box-shadow: 0 0 0 3px var(--vf-bg, var(--brand-l)), 0 8px 24px rgba(0, 0, 0, .1);
-}
-
-.vf-num {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  flex-shrink: 0;
-  background: var(--vf-c, var(--brand));
-  color: #fff;
-  font-size: 13px;
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vf-info {
-  flex: 1;
-  min-width: 0;
-}
-.vf-name {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--ink);
-  margin-bottom: 2px;
-  letter-spacing: -.2px;
-}
-.vf-sub {
-  font-size: 11.5px;
-  color: var(--ink3);
-}
-
-.vf-arrow {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--surf3);
-  color: var(--ink3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .25s, background .25s, color .25s;
-}
-.vf-node.active .vf-arrow {
-  transform: rotate(90deg);
-  background: var(--vf-c, var(--brand));
-  color: #fff;
-}
-
-.vf-tag {
-  position: absolute;
-  right: -90px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  color: var(--vf-c, var(--brand));
-  background: var(--vf-bg, var(--brand-l));
-  padding: 4px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-.vf-connector {
-  width: 2px;
-  height: 24px;
-  background: var(--vf-c-next, var(--surf4));
-  margin: 0 auto;
-}
-
-/* Phase colours */
+/* Phase colours — also drive the AnimatedFlowEdge particles and modal accents */
 .vf-p1 { --vf-c: var(--brand); --vf-bg: var(--brand-l); }
 .vf-p2 { --vf-c: var(--cyan); --vf-bg: var(--cyan-l); }
 .vf-p3 { --vf-c: var(--green); --vf-bg: var(--green-l); }
 .vf-p4 { --vf-c: var(--amber); --vf-bg: var(--amber-l); }
 .vf-p5 { --vf-c: var(--purple); --vf-bg: var(--purple-l); }
 
-/* The gate special styling */
-.vf-gate-node {
-  width: 100%;
-  background: linear-gradient(135deg, var(--ink), var(--ink2));
-  border: 2px solid var(--brand);
-  border-radius: 14px;
-  padding: 22px 22px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-  color: #fff;
-  box-shadow: 0 8px 32px rgba(99, 102, 241, .2);
-}
-.vf-gate-node .vf-num {
-  background: linear-gradient(135deg, var(--brand), var(--cyan));
-}
-.vf-gate-node .vf-name {
-  color: #fff;
-  font-size: 15px;
-}
-.vf-gate-node .vf-sub {
-  color: rgba(255, 255, 255, .6);
-}
-.vf-decision-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-  justify-content: center;
-}
-.vf-dec {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 14px;
-}
-.vf-dec-y {
-  background: rgba(16, 185, 129, .15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, .3);
-}
-.vf-dec-n {
-  background: rgba(244, 63, 94, .15);
-  color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, .3);
+/* Modal accent colours for the gate / production nodes */
+.vf-gate { --vf-c: var(--brand); }
+.vf-production-modal { --vf-c: var(--green); }
+
+.dm-header-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 16px;
 }
 
-/* Production banner */
-.vf-production {
-  background: linear-gradient(135deg, var(--green-l), var(--cyan-l));
-  border: 2px solid var(--green);
-  border-radius: 14px;
-  padding: 16px 22px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-align: center;
-  justify-content: center;
-}
-.vf-production-icon {
-  font-size: 24px;
-  color: var(--green);
-}
-.vf-production-title {
-  font-size: 14px;
-  font-weight: 900;
-  color: var(--green);
-  letter-spacing: -.2px;
-}
-.vf-production-sub {
-  font-size: 11.5px;
-  color: var(--ink3);
-  margin-top: 2px;
-}
-
-/* Expanded phase detail */
-.vf-detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .4s ease-out;
-}
-.vf-detail.open {
-  max-height: 1400px;
-}
-.vf-detail-inner {
-  background: var(--surf);
-  border: 1.5px solid var(--vf-c, var(--brand));
-  border-top: none;
-  border-radius: 0 0 16px 16px;
-  padding: 24px 26px;
-  margin-top: -2px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
+/* Phase detail content (Phase1Detail .. Phase5Detail, GateDetail, ProductionDetail) */
 .vfd-col-title {
   font-size: 10.5px;
   font-weight: 800;
@@ -264,7 +69,7 @@
   font-weight: 700;
 }
 .vfd-prompt {
-  background: var(--ink);
+  background: var(--navy);
   border-radius: 10px;
   padding: 14px 16px;
   font-family: 'JetBrains Mono', monospace;
@@ -297,7 +102,5 @@
 }
 
 @media (max-width: 900px) {
-  .vf-tag { display: none; }
-  .vflow { max-width: 100%; }
-  .vf-detail-inner { grid-template-columns: 1fr; }
+  .phases-flow { padding: 32px 16px; }
 }

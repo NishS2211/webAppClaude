@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { Eyebrow, SectionTitle, SectionSubtitle } from '../atoms/SectionHeading';
 import { GradText } from '../atoms/GradText';
+import { Reveal } from '../atoms/Reveal';
 import { TokenHero } from '../molecules/TokenHero';
-import { TokenTechCard } from '../molecules/TokenTechCard';
+import { TokenLayout } from './TokenLayout';
+import { DetailModal, DetailModalHeader } from '../molecules/DetailModal';
 import { tokenTechniques } from '../../data/tokenTechniques';
-import { useMultiToggle } from '../../hooks/useMultiToggle';
 import './TokenSection.css';
 
 export function TokenSection() {
-  const { isOpen, toggle } = useMultiToggle();
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const active = tokenTechniques.find((t) => t.id === activeId);
 
   return (
     <section className="token-section" id="tokens">
@@ -15,22 +18,33 @@ export function TokenSection() {
         <Eyebrow>04 · Token Efficiency</Eyebrow>
         <SectionTitle>Same output. <GradText>Less money.</GradText></SectionTitle>
         <SectionSubtitle>
-          Every wasted token = wasted dollars. These five techniques cut my AI bills by roughly a fifth without losing quality. Click each to expand.
+          Every wasted token is a wasted dollar. Six techniques that cut AI bills by roughly 30% — without losing quality. Click any technique to see how.
         </SectionSubtitle>
 
         <TokenHero />
 
-        <div className="tok-tech-grid">
-          {tokenTechniques.map((technique) => (
-            <TokenTechCard
-              key={technique.id}
-              technique={technique}
-              isOpen={isOpen(technique.id)}
-              onClick={() => toggle(technique.id)}
-            />
-          ))}
-        </div>
+        <Reveal className="token-flow">
+          <TokenLayout onSelect={setActiveId} />
+        </Reveal>
       </div>
+
+      <DetailModal isOpen={!!active} onClose={() => setActiveId(null)} colorClass={active?.colorClass}>
+        {active && (
+          <>
+            <DetailModalHeader icon={active.icon} title={active.name} tagline={active.saving} />
+            <div className="ttc-modal-desc">{active.description}</div>
+            {active.usedIn && active.usedIn.length > 0 && (
+              <div className="ttc-used-in">
+                <span className="ttc-used-in-label">Used in</span>
+                {active.usedIn.map((p) => (
+                  <span className="ttc-used-in-chip" key={p.id}>{p.icon} {p.name}</span>
+                ))}
+              </div>
+            )}
+            {active.detail}
+          </>
+        )}
+      </DetailModal>
     </section>
   );
 }

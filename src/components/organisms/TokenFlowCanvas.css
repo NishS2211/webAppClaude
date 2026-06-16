@@ -1,0 +1,8 @@
+.token-flow-canvas {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.token-flow-canvas .react-flow__background {
+  opacity: .5;
+}

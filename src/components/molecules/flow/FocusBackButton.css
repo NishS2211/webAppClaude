@@ -1,0 +1,23 @@
+.focus-back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink2);
+  background: var(--surf);
+  border: 1.5px solid var(--surf4);
+  border-radius: 999px;
+  padding: 8px 16px 8px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: border-color .2s, color .2s;
+}
+.focus-back-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}

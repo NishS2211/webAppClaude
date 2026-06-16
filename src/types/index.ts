@@ -38,9 +38,6 @@ export interface ConnectorUseCase {
   icon: ReactNode;
   title: string;
   text: ReactNode;
-  bg: string;
-  borderColor: string;
-  titleColor: string;
 }
 
 export interface ConnectorDetail {
@@ -64,6 +61,12 @@ export interface Connector {
   detail: ConnectorDetail;
 }
 
+export interface TokenUsedIn {
+  id: string;
+  name: string;
+  icon: ReactNode;
+}
+
 export interface TokenTechnique {
   id: string;
   colorClass: string;
@@ -72,6 +75,7 @@ export interface TokenTechnique {
   saving: string;
   description: string;
   detail: ReactNode;
+  usedIn?: TokenUsedIn[];
 }
 
 export interface ProjectMetric {

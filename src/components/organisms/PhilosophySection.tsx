@@ -2,7 +2,7 @@ import { LuZap, LuShieldCheck, LuLock } from 'react-icons/lu';
 import { Eyebrow, SectionTitle } from '../atoms/SectionHeading';
 import { GradText } from '../atoms/GradText';
 import { Reveal } from '../atoms/Reveal';
-import { TrustChain } from '../molecules/TrustChain';
+import { TrustChainLayout } from './TrustChainLayout';
 import { PrincipleCard } from '../molecules/PrincipleCard';
 import './PhilosophySection.css';
 
@@ -37,8 +37,8 @@ export function PhilosophySection() {
         <Eyebrow>01 · The Trust Chain</Eyebrow>
         <SectionTitle>Where the <GradText>human stays in charge.</GradText></SectionTitle>
 
-        <Reveal className="phil-trust-chain">
-          <TrustChain />
+        <Reveal className="phil-trust-flow">
+          <TrustChainLayout />
         </Reveal>
 
         <div className="phil-principles">

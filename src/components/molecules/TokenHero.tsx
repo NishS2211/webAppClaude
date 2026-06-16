@@ -1,9 +1,27 @@
+import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useReveal } from '../../hooks/useReveal';
 
 const bars = [
   { key: 'before', label: 'Before — vague prompts, multi-session', value: '100%', width: 100 },
-  { key: 'after', label: 'After — disciplined prompts, single session', value: '~80%', width: 80 },
+  { key: 'after', label: 'After — disciplined prompts, single session', value: '~70%', width: 70 },
 ];
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+function AnimatedPercent({ value, visible, prefix = '' }: { value: number; visible: boolean; prefix?: string }) {
+  const motionValue = useMotionValue(0);
+  const spring = useSpring(motionValue, { stiffness: 50, damping: 18 });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (visible) motionValue.set(value);
+  }, [visible, value, motionValue]);
+
+  useEffect(() => spring.on('change', (v) => setDisplay(Math.round(v))), [spring]);
+
+  return <>{prefix}{display}%</>;
+}
 
 export function TokenHero() {
   const { ref, visible } = useReveal<HTMLDivElement>(0.2);
@@ -12,7 +30,9 @@ export function TokenHero() {
     <div className={`tok-hero reveal ${visible ? 'visible' : ''}`.trim()} ref={ref}>
       <div className="tok-hero-left">
         <div className="tok-hero-eyebrow">Realistic savings target</div>
-        <div className="tok-hero-title">Save up to <span className="pct">20%</span><br />on your AI bills</div>
+        <div className="tok-hero-title">
+          Save up to <span className="pct"><AnimatedPercent value={30} visible={visible} /></span><br />on your AI bills
+        </div>
         <div className="tok-hero-sub">
           Without losing quality. Without changing the workflow. Just by being deliberate about how you spend tokens.
         </div>
@@ -24,9 +44,11 @@ export function TokenHero() {
                 <span className="tok-bar-label-r">{bar.value}</span>
               </div>
               <div className="tok-bar-track">
-                <div
+                <motion.div
                   className={`tok-bar-fill ${bar.key}`}
-                  style={{ width: visible ? `${bar.width}%` : 0, transitionDelay: `${200 + i * 150}ms` }}
+                  initial={{ width: 0 }}
+                  animate={{ width: visible ? `${bar.width}%` : 0 }}
+                  transition={{ duration: 1, delay: 0.2 + i * 0.15, ease: EASE }}
                 />
               </div>
             </div>
@@ -35,10 +57,15 @@ export function TokenHero() {
       </div>
       <div className="tok-hero-right">
         <div className="tok-circle">
-          <div className="tok-circle-inner">
-            <div className="tok-circle-pct">~20%</div>
+          <motion.div
+            className="tok-circle-inner"
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={visible ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            <div className="tok-circle-pct"><AnimatedPercent value={30} visible={visible} prefix="~" /></div>
             <div className="tok-circle-label">Money saved</div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

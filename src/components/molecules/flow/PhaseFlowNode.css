@@ -1,0 +1,159 @@
+.flow-handle {
+  width: 1px;
+  height: 1px;
+  min-width: 0;
+  min-height: 0;
+  border: none;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pf-card {
+  width: 440px;
+  max-width: calc(100vw - 64px);
+  background: var(--surf);
+  border: 2px solid var(--vf-c, var(--brand));
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.pf-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pf-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: var(--vf-c, var(--brand));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-info {
+  flex: 1;
+  min-width: 0;
+}
+.pf-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+  letter-spacing: -.2px;
+}
+.pf-sub {
+  font-size: 11.5px;
+  color: var(--ink3);
+  line-height: 1.4;
+}
+
+.pf-arrow {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--vf-bg, var(--brand-l));
+  color: var(--vf-c, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-tag-row {
+  margin-top: 10px;
+  display: flex;
+}
+.pf-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--vf-c, var(--brand));
+  background: var(--vf-bg, var(--brand-l));
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Gate variant */
+.pf-gate {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  border: 2px solid var(--brand);
+  color: #fff;
+}
+.pf-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.pf-gate-icon {
+  background: linear-gradient(135deg, var(--brand), var(--cyan));
+}
+.pf-gate .pf-name { color: #fff; font-size: 15px; }
+.pf-gate .pf-sub { color: rgba(255, 255, 255, .6); }
+
+.pf-decision-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+.pf-dec {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 14px;
+}
+.pf-dec-y {
+  background: rgba(16, 185, 129, .15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, .3);
+}
+.pf-dec-n {
+  background: rgba(244, 63, 94, .15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, .3);
+}
+
+/* Production variant */
+.pf-production {
+  background: linear-gradient(135deg, var(--green-l), var(--cyan-l));
+  border: 2px solid var(--green);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pf-production-icon {
+  background: var(--green);
+}
+.pf-production-name {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+@media (max-width: 900px) {
+  .pf-card {
+    width: min(380px, calc(100vw - 56px));
+    padding: 14px 16px;
+  }
+}

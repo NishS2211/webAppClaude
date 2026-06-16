@@ -1,0 +1,93 @@
+.pdp-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.pdp-step {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
+}
+
+.pdp-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 28px;
+  color: var(--pc, var(--brand));
+  opacity: .6;
+}
+
+.pdp-card {
+  flex: 1;
+  min-width: 0;
+  background: var(--surf2);
+  border: 1px solid var(--surf4);
+  border-radius: 14px;
+  padding: 16px;
+  align-self: stretch;
+}
+
+.pdp-card-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pdp-challenge .pdp-card-title { color: var(--rose); }
+.pdp-solution .pdp-card-title { color: var(--pc, var(--brand)); }
+.pdp-outcome .pdp-card-title { color: var(--green); }
+
+.pdp-card-text {
+  font-size: 12.5px;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+.pdp-card-text code { font-size: 11px; }
+
+.pdp-outcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pdp-outcome-val {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--pc, var(--brand));
+  letter-spacing: -.5px;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.pdp-outcome-label {
+  font-size: 11px;
+  color: var(--ink3);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .pdp-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pdp-step {
+    flex-direction: column;
+  }
+  .pdp-arrow {
+    width: auto;
+    height: 20px;
+    transform: rotate(90deg);
+  }
+}

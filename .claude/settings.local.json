@@ -10,7 +10,9 @@
       "Read(//Users/nishchay_s/Library/Caches/**)",
       "Bash(mkdir -p /tmp/pwtest)",
       "Read(//tmp/**)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Skill(run)",
+      "Bash(curl *)"
     ]
   }
 }

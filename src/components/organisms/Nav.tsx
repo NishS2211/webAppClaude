@@ -1,6 +1,10 @@
+import { LuMoon, LuSun } from 'react-icons/lu';
+import { useTheme } from '../../hooks/useTheme';
 import './Nav.css';
 
 export function Nav() {
+  const { theme, toggle } = useTheme();
+
   return (
     <nav>
       <a className="nav-logo" href="#">
@@ -11,7 +15,18 @@ export function Nav() {
         </div>
         <span className="nav-title"><em>AI</em>Dev Workflow</span>
       </a>
-      <div className="nav-pill">Internal Team Session · 2026</div>
+      <div className="nav-right">
+        <div className="nav-pill">Internal Team Session · 2026</div>
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggle}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <LuSun /> : <LuMoon />}
+        </button>
+      </div>
     </nav>
   );
 }

@@ -1,0 +1,66 @@
+.cf-card {
+  width: 188px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surf);
+  border: 1.5px solid var(--surf4);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color .2s;
+}
+.cf-card:hover {
+  border-color: var(--cc, var(--brand));
+}
+
+.cf-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+}
+.cf-logo svg {
+  width: 19px;
+  height: 19px;
+}
+
+.cf-info {
+  flex: 1;
+  min-width: 0;
+}
+.cf-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.cf-status {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--green);
+  text-transform: uppercase;
+}
+.cf-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .cf-card { width: 168px; }
+}

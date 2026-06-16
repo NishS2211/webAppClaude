@@ -1,0 +1,9 @@
+.phases-flow-canvas {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.phases-flow-canvas .react-flow__background {
+  opacity: .5;
+}

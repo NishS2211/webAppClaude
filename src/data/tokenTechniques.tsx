@@ -1,6 +1,15 @@
 import { LuFileText, LuCrosshair, LuRefreshCw, LuZap, LuPlug, LuUndo2 } from 'react-icons/lu';
-import type { TokenTechnique } from '../types';
+import type { TokenTechnique, TokenUsedIn } from '../types';
 import { TipList, ComparisonBoxes } from '../components/molecules/TokenTechParts';
+import { projects } from './projects';
+
+/** Cross-reference a project from the Projects section by id (name + icon only). */
+function usedIn(...ids: string[]): TokenUsedIn[] {
+  return ids.map((id) => {
+    const p = projects.find((proj) => proj.id === id)!;
+    return { id: p.id, name: p.name, icon: p.icon };
+  });
+}
 
 export const tokenTechniques: TokenTechnique[] = [
   {
@@ -9,7 +18,7 @@ export const tokenTechniques: TokenTechnique[] = [
     icon: <LuFileText />,
     name: 'Persistent plan.md / README.md',
     saving: '↓ Saves context-reloading tokens every session',
-    description: 'Write your architecture and constraints into a persistent file once. Every new session restores context from the file — not from chat history.',
+    description: 'Write architecture and constraints into a persistent file once — every session restores context from there, not from chat history.',
     detail: (
       <TipList
         tips={[
@@ -19,6 +28,7 @@ export const tokenTechniques: TokenTechnique[] = [
         ]}
       />
     ),
+    usedIn: usedIn('epp', 'fleet'),
   },
   {
     id: '2',
@@ -41,6 +51,7 @@ export const tokenTechniques: TokenTechnique[] = [
         />
       </>
     ),
+    usedIn: usedIn('fleet', 'decor'),
   },
   {
     id: '3',
@@ -48,7 +59,7 @@ export const tokenTechniques: TokenTechnique[] = [
     icon: <LuRefreshCw />,
     name: 'Reuse & extend diagrams — never regenerate',
     saving: '↓ Saves 500+ tokens per diagram update',
-    description: 'Flow diagrams in Mermaid.js or SVG are cheap to extend, expensive to regenerate. Always paste existing code and describe the delta.',
+    description: 'Diagrams are cheap to extend, expensive to regenerate. Paste the existing code and describe the delta.',
     detail: (
       <>
         <ComparisonBoxes
@@ -64,6 +75,7 @@ export const tokenTechniques: TokenTechnique[] = [
         />
       </>
     ),
+    usedIn: usedIn('decor', 'epp'),
   },
   {
     id: '4',
@@ -76,11 +88,12 @@ export const tokenTechniques: TokenTechnique[] = [
       <TipList
         tips={[
           "Don't split planning and implementation across sessions if you can avoid it. The model's codebase understanding is your most valuable free resource.",
-          'If you must start fresh: point Claude at plan.md and README.md first. These are your token-efficient context restorers.',
+          'If you must start fresh, point Claude at plan.md and README.md first.',
           'For huge tasks: split by feature, not by session. One feature = one session, end to end.',
         ]}
       />
     ),
+    usedIn: usedIn('dash', 'fleet'),
   },
   {
     id: '5',
@@ -98,6 +111,7 @@ export const tokenTechniques: TokenTechnique[] = [
         ]}
       />
     ),
+    usedIn: usedIn('epp', 'fleet'),
   },
   {
     id: '6',
@@ -105,7 +119,7 @@ export const tokenTechniques: TokenTechnique[] = [
     icon: <LuUndo2 />,
     name: 'Revert > patch a bad foundation',
     saving: '↓ Saves entire correction sessions',
-    description: 'When implementation goes wrong, every patch costs more than the last. Discard the git diff. Re-scope with tighter constraints. Start clean.',
+    description: 'When implementation goes sideways, every patch costs more than the last — discard the diff, re-scope tighter, and start clean.',
     detail: (
       <TipList
         tips={[
@@ -115,5 +129,6 @@ export const tokenTechniques: TokenTechnique[] = [
         ]}
       />
     ),
+    usedIn: usedIn('dash', 'decor'),
   },
 ];

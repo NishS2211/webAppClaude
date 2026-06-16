@@ -1,27 +1,42 @@
-import type { ComponentType } from 'react';
+import { useState } from 'react';
 import { Eyebrow, SectionTitle, SectionSubtitle } from '../atoms/SectionHeading';
 import { GradText } from '../atoms/GradText';
 import { Reveal } from '../atoms/Reveal';
-import { PhaseConnector } from '../atoms/PhaseConnector';
-import { PhaseNode } from '../molecules/PhaseNode';
-import { PhaseDetail } from '../molecules/PhaseDetail';
-import { GateNode } from '../molecules/GateNode';
-import { ProductionBanner } from '../molecules/ProductionBanner';
-import { Phase1Detail, Phase2Detail, Phase3Detail, Phase4Detail, Phase5Detail } from '../molecules/PhaseDetails';
+import { PhasesFlowCanvas } from './PhasesFlowCanvas';
+import { DetailModal, DetailModalHeader } from '../molecules/DetailModal';
+import { PhaseVisualFlow } from '../molecules/PhaseVisualFlow';
+import { GateDetail, ProductionDetail } from '../molecules/PhaseExtraDetails';
 import { phases } from '../../data/phases';
-import { useAccordion } from '../../hooks/useAccordion';
 import './PhasesSection.css';
 
-const detailsById: Record<string, ComponentType> = {
-  '1': Phase1Detail,
-  '2': Phase2Detail,
-  '3': Phase3Detail,
-  '4': Phase4Detail,
-  '5': Phase5Detail,
-};
-
 export function PhasesSection() {
-  const { isOpen, toggle } = useAccordion();
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  let colorClass: string | undefined;
+  let content: React.ReactNode = null;
+
+  if (activeId === 'gate') {
+    colorClass = 'vf-gate';
+    content = <GateDetail />;
+  } else if (activeId === 'production') {
+    colorClass = 'vf-production-modal';
+    content = <ProductionDetail />;
+  } else if (activeId) {
+    const phase = phases.find((p) => p.id === activeId);
+    if (phase) {
+      colorClass = phase.colorClass;
+      content = (
+        <>
+          <DetailModalHeader
+            icon={<span className="dm-header-num">{phase.num}</span>}
+            title={phase.name}
+            tagline={phase.sub}
+          />
+          <PhaseVisualFlow phaseId={activeId} />
+        </>
+      );
+    }
+  }
 
   return (
     <section className="phases-section" id="phases">
@@ -29,30 +44,17 @@ export function PhasesSection() {
         <Eyebrow>02 · The 5-Phase Workflow</Eyebrow>
         <SectionTitle>Five gates. <GradText>One source of truth.</GradText></SectionTitle>
         <SectionSubtitle>
-          Click any phase below to expand. The flow is strict — Claude doesn't touch the codebase until the gate approves.
+          Click any node to see how it works. The flow is strict — Claude doesn't touch the codebase until the gate approves.
         </SectionSubtitle>
 
         <Reveal className="phases-flow">
-          <div className="vflow">
-            {phases.map((phase, i) => {
-              const Detail = detailsById[phase.id];
-              return (
-                <div key={phase.id}>
-                  <PhaseNode phase={phase} isActive={isOpen(phase.id)} onClick={() => toggle(phase.id)} />
-                  <PhaseDetail id={phase.id} colorClass={phase.colorClass} isOpen={isOpen(phase.id)} fullWidth={phase.id === '3'}>
-                    <Detail />
-                  </PhaseDetail>
-                  <PhaseConnector color={phase.connectorColor} height={i === phases.length - 1 ? 32 : undefined} />
-                </div>
-              );
-            })}
-
-            <GateNode />
-            <PhaseConnector color="var(--green)" height={32} />
-            <ProductionBanner />
-          </div>
+          <PhasesFlowCanvas onSelect={setActiveId} />
         </Reveal>
       </div>
+
+      <DetailModal isOpen={!!activeId} onClose={() => setActiveId(null)} colorClass={colorClass}>
+        {content}
+      </DetailModal>
     </section>
   );
 }

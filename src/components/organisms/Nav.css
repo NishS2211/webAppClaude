@@ -6,6 +6,9 @@ nav{
   position:sticky;top:0;z-index:500;
   backdrop-filter:blur(16px);
 }
+[data-theme='dark'] nav{
+  background:rgba(10,15,30,0.8);
+}
 .nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
 .nav-mark{
   width:36px;height:36px;border-radius:10px;
@@ -24,6 +27,18 @@ nav{
 }
 .nav-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand);animation:pulse 2s ease-in-out infinite}
 
+.nav-right{display:flex;align-items:center;gap:14px}
+
+.theme-toggle{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--surf4);background:var(--surf3);color:var(--ink3);
+  font-size:16px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s,transform .15s;
+}
+.theme-toggle:hover{color:var(--brand);border-color:var(--brand-m);transform:rotate(15deg)}
+
 @media(max-width:900px){
   nav{padding:0 20px}
+  .nav-pill{display:none}
 }
