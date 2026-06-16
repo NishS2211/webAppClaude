@@ -12,7 +12,9 @@
       "Read(//tmp/**)",
       "Bash(npm install *)",
       "Skill(run)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Bash(npx vite *)",
+      "Bash(xargs ls)"
     ]
   }
 }

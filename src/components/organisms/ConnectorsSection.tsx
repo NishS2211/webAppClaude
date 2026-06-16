@@ -19,7 +19,7 @@ export function ConnectorsSection() {
         <Eyebrow>03 · Power-Ups & Connectors</Eyebrow>
         <SectionTitle>Plug Claude into your <GradText>actual tools.</GradText></SectionTitle>
         <SectionSubtitle>
-          Claude sits at the center with a two-way connection to every tool — it reads from your apps and writes back. Click any connector to see real prompts you can use today.
+          Claude sits at the center — connected to your design tools, project boards, communication apps, and freelance platforms. Click any connector to see real prompts you can use today.
         </SectionSubtitle>
 
         <Reveal className="conn-flow">

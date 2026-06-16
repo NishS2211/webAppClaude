@@ -9,10 +9,11 @@ const CONNECTOR_EDGE_COLORS: Record<string, string> = {
   figma: '#F24E1E',
   postman: '#FF6C37',
   jira: '#0052CC',
-  drive: '#1FA463',
   gmail: '#EA4335',
   calendar: '#4285F4',
-  code: '#6366f1',
+  upwork: '#6FDA44',
+  slack: '#E01E5A',
+  monday: '#FF3D57',
 };
 
 const HUB_SIZE = 140;
@@ -22,8 +23,8 @@ const CARD_H = 62;
 const MOBILE_CARD_W = 168;
 const MOBILE_CARD_H = 62;
 
-const DESKTOP_RADIUS = 270;
-const DESKTOP_CENTER: XYPosition = { x: 400, y: 380 };
+const DESKTOP_RADIUS = 300;
+const DESKTOP_CENTER: XYPosition = { x: 450, y: 420 };
 
 export const connectorsFlowDesktopSize = { width: DESKTOP_CENTER.x * 2, height: DESKTOP_CENTER.y * 2 };
 

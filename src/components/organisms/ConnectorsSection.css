@@ -26,21 +26,23 @@
 }
 
 /* Connector colors — also drive AnimatedFlowEdge particles and modal accents */
-.cc-figma { --cc: #F24E1E; --cc-l: #FEF2EE; }
-.cc-postman { --cc: #FF6C37; --cc-l: #FFF4EE; }
-.cc-jira { --cc: #0052CC; --cc-l: #E9F2FF; }
-.cc-drive { --cc: #1FA463; --cc-l: #ECFDF5; }
-.cc-gmail { --cc: #EA4335; --cc-l: #FEF2F2; }
+.cc-figma    { --cc: #F24E1E; --cc-l: #FEF2EE; }
+.cc-postman  { --cc: #FF6C37; --cc-l: #FFF4EE; }
+.cc-jira     { --cc: #0052CC; --cc-l: #E9F2FF; }
+.cc-gmail    { --cc: #EA4335; --cc-l: #FEF2F2; }
 .cc-calendar { --cc: #4285F4; --cc-l: #EFF6FF; }
-.cc-code { --cc: #6366f1; --cc-l: #EEF2FF; }
+.cc-upwork   { --cc: #6FDA44; --cc-l: #F0FDE4; }
+.cc-slack    { --cc: #E01E5A; --cc-l: #FDF2F6; }
+.cc-monday   { --cc: #FF3D57; --cc-l: #FFF0F2; }
 
-[data-theme='dark'] .cc-figma { --cc-l: rgba(242, 78, 30, .15); }
-[data-theme='dark'] .cc-postman { --cc-l: rgba(255, 108, 55, .15); }
-[data-theme='dark'] .cc-jira { --cc-l: rgba(0, 82, 204, .15); }
-[data-theme='dark'] .cc-drive { --cc-l: rgba(31, 164, 99, .15); }
-[data-theme='dark'] .cc-gmail { --cc-l: rgba(234, 67, 53, .15); }
+[data-theme='dark'] .cc-figma    { --cc-l: rgba(242, 78, 30, .15); }
+[data-theme='dark'] .cc-postman  { --cc-l: rgba(255, 108, 55, .15); }
+[data-theme='dark'] .cc-jira     { --cc-l: rgba(0, 82, 204, .15); }
+[data-theme='dark'] .cc-gmail    { --cc-l: rgba(234, 67, 53, .15); }
 [data-theme='dark'] .cc-calendar { --cc-l: rgba(66, 133, 244, .15); }
-[data-theme='dark'] .cc-code { --cc-l: rgba(99, 102, 241, .15); }
+[data-theme='dark'] .cc-upwork   { --cc-l: rgba(111, 218, 68, .15); }
+[data-theme='dark'] .cc-slack    { --cc-l: rgba(224, 30, 90, .15); }
+[data-theme='dark'] .cc-monday   { --cc-l: rgba(255, 61, 87, .15); }
 
 /* Prompt examples (inside DetailModal) */
 .cdi-examples-title {

@@ -1,5 +1,5 @@
-import { SiFigma, SiPostman, SiGoogledrive, SiGmail, SiGooglecalendar, SiJirasoftware } from 'react-icons/si';
-import { LuSquareTerminal, LuZap, LuTarget, LuFolderOpen, LuMailCheck, LuClock, LuRocket, LuListChecks } from 'react-icons/lu';
+import { SiFigma, SiPostman, SiGmail, SiGooglecalendar, SiJirasoftware, SiUpwork, SiSlack } from 'react-icons/si';
+import { LuZap, LuTarget, LuListChecks, LuMailCheck, LuClock, LuFileText, LuMessageSquare, LuKanban, LuLayoutDashboard } from 'react-icons/lu';
 import type { Connector } from '../types';
 
 export const connectors: Connector[] = [
@@ -42,7 +42,7 @@ export const connectors: Connector[] = [
         {
           num: 3,
           title: 'Ask Claude',
-          text: 'Ask for code, design tokens, or even a FigJam diagram. Claude can also create new files and write components straight into your Figma project.',
+          text: 'Ask for code, design tokens, or a FigJam diagram. Claude can also write components straight into your Figma project.',
           screen: (
             <>
               <span className="cmt">// Tool used:</span><br />
@@ -103,7 +103,7 @@ export const connectors: Connector[] = [
         {
           num: 3,
           title: 'Generate',
-          text: 'Generate TypeScript types, API service methods, or even sync changes back to your collection.',
+          text: 'Generate TypeScript types, API service methods, or sync changes back to your collection.',
           screen: (
             <>
               <span className="cmt">// Output:</span><br />
@@ -164,7 +164,7 @@ export const connectors: Connector[] = [
         {
           num: 3,
           title: 'Scope into plan.md',
-          text: 'Claude turns acceptance criteria into a checklist in plan.md — ready for the Phase 3 research → plan → annotate cycle.',
+          text: 'Claude turns acceptance criteria into a plan.md checklist — ready for the Phase 3 research → plan → annotate cycle.',
           screen: (
             <>
               <span className="cmt">// plan.md</span><br />
@@ -183,68 +183,6 @@ export const connectors: Connector[] = [
         icon: <LuListChecks />,
         title: 'In my workflow',
         text: <>Before Phase 3 starts, I point Claude at the ticket. <strong>Acceptance criteria become the plan.md checklist verbatim</strong> — nothing gets lost between PM and code.</>,
-      },
-    },
-  },
-  {
-    id: 'drive',
-    colorClass: 'cc-drive',
-    name: 'Google Drive',
-    status: 'Connected',
-    logoBg: 'linear-gradient(135deg,#1FA463,#4285F4)',
-    logo: <SiGoogledrive />,
-    description: 'Share a PRD, architecture doc, or requirement spreadsheet via Drive — Claude reads it directly and uses it as planning context.',
-    tags: ['Doc Context', 'PRD Reader'],
-    detail: {
-      title: 'Google Drive × Claude',
-      tagline: 'Your PRDs, specs, and architecture docs — readable on demand.',
-      steps: [
-        {
-          num: 1,
-          title: 'Connect',
-          text: 'Settings → Connectors → Google Drive → OAuth with your Google account. Set permission level (read-only is recommended).',
-          screen: (
-            <>
-              <span className="cmt">// OAuth scope:</span><br />
-              <span className="acc">drive.readonly</span><br />
-              <span className="br">[Authorize]</span>
-            </>
-          ),
-        },
-        {
-          num: 2,
-          title: 'Reference',
-          text: 'Drop a Drive link, mention a file name, or ask Claude to search. Works with Docs, Sheets, Slides, and PDFs.',
-          screen: (
-            <>
-              <span className="cmt">// Mention any of:</span><br />
-              <span className="acc">@HDFleet-PRD-v2</span><br />
-              drive.google.com/...
-            </>
-          ),
-        },
-        {
-          num: 3,
-          title: 'Use as context',
-          text: 'Claude reads the doc and uses it as Phase 1 / Phase 3 input — without you copying entire paragraphs into chat.',
-          screen: (
-            <>
-              <span className="cmt">// Result:</span><br />
-              README.md generated<br />
-              <span className="acc">from PRD context</span>
-            </>
-          ),
-        },
-      ],
-      prompts: [
-        { text: <>"Read my <span className="hl">HDFleet DVIR PRD</span> in Drive and create a phase-3 README.md scoped only to the inspection submit flow."</> },
-        { text: <>"Find my <span className="hl">Decor CDI tablet support spec</span> and list every screen mentioned with its priority."</> },
-        { text: <>"Open the architecture doc <span className="hl">linked here</span>, audit it against our actual codebase, and flag inconsistencies."</> },
-      ],
-      useCase: {
-        icon: <LuFolderOpen />,
-        title: 'In my workflow',
-        text: <>Phase 1 and 2 lean on this heavily. <strong>I never paste a PRD into chat anymore.</strong> Claude pulls fresh from Drive every time, so context is always current.</>,
       },
     },
   },
@@ -288,7 +226,7 @@ export const connectors: Connector[] = [
         {
           num: 3,
           title: 'Extract & act',
-          text: 'Claude summarizes thread, extracts change requests as a checklist, and can draft a reply in your tone.',
+          text: 'Claude summarizes the thread, extracts change requests as a checklist, and can draft a reply in your tone.',
           screen: (
             <>
               <span className="cmt">// Output:</span><br />
@@ -372,65 +310,185 @@ export const connectors: Connector[] = [
     },
   },
   {
-    id: 'code',
-    colorClass: 'cc-code',
-    name: 'Claude Code CLI',
-    status: 'Power Mode',
-    statusColor: 'var(--brand)',
-    logoBg: 'linear-gradient(135deg,#6366f1,#06b6d4)',
-    logo: <LuSquareTerminal />,
-    description: 'Terminal-based agentic dev. Multi-file refactors in one command. The "Implement it all" workflow weaponized.',
-    tags: ['Multi-file Edits', 'Agentic'],
+    id: 'upwork',
+    colorClass: 'cc-upwork',
+    name: 'Upwork',
+    status: 'Connected',
+    logoBg: 'linear-gradient(135deg,#14a800,#6FDA44)',
+    logo: <SiUpwork />,
+    description: 'Read job postings, client briefs, and active contract messages. Write tailored proposals and extract project requirements — without copy-pasting between tabs.',
+    tags: ['Proposals', 'Brief Context'],
     detail: {
-      title: 'Claude Code CLI',
-      tagline: 'The "Implement it all" command, weaponized for your whole repo.',
+      title: 'Upwork × Claude',
+      tagline: 'Job brief in. Tailored proposal out. In under 5 minutes.',
       steps: [
         {
           num: 1,
-          title: 'Install',
-          text: 'One npm command. Runs in any terminal. Works across macOS, Linux, and Windows (WSL).',
+          title: 'Connect',
+          text: 'Settings → Connectors → Upwork → OAuth with your Upwork account. Claude gets read access to job postings and active contracts.',
           screen: (
             <>
-              <span className="cmt">// In terminal:</span><br />
-              <span className="acc">npm install -g</span><br />
-              @anthropic-ai/<span className="br">claude-code</span>
+              <span className="cmt">// Settings → Connectors</span><br />
+              <span className="acc">▸</span> Upwork <span className="br">[Connect]</span>
             </>
           ),
         },
         {
           num: 2,
-          title: 'Run in repo',
-          text: 'cd into your project folder, type claude, login once. Claude now reads your entire codebase.',
+          title: 'Reference a job or contract',
+          text: 'Paste a job posting URL or contract ID. Claude reads the full description, requirements, budget range, and client history.',
           screen: (
             <>
-              <span className="cmt">// In repo root:</span><br />
-              $ <span className="acc">cd hdfleet-app/</span><br />
-              $ <span className="br">claude</span>
+              <span className="cmt">// Drop any of:</span><br />
+              <span className="acc">upwork.com/jobs/~01...</span><br />
+              contract ID or paste text
             </>
           ),
         },
         {
           num: 3,
-          title: 'Execute plans',
-          text: 'Hand it your annotated plan.md, run "implement it all". Claude edits multiple files, runs typecheck, marks tasks done.',
+          title: 'Generate & extract',
+          text: 'Claude writes a targeted proposal, extracts client action items from messages, or scopes the project into a deliverable breakdown.',
           screen: (
             <>
-              <span className="cmt">// Inside CLI:</span><br />
-              {'> '}<span className="acc">read plan.md and</span><br />
-              {'  '}<span className="acc">implement it all</span>
+              <span className="cmt">// Output:</span><br />
+              <span className="acc">proposal.md</span> drafted<br />
+              <span className="br">scope + timeline</span>
             </>
           ),
         },
       ],
       prompts: [
-        { text: <>"Read <span className="hl">plan.md</span>. Implement all tasks. Mark them complete as you go. Run typecheck after each file. Do not stop."</> },
-        { text: <>"Refactor every component in <span className="hl">src/screens/Map/</span> to use the new VehicleMarkerLayer. Preserve public hooks via shim."</> },
-        { text: <>"Audit all <span className="hl">.tsx</span> files for any/unknown types. Replace with proper types. Update tests."</> },
+        { text: <>"Read this Upwork job posting <span className="hl">[URL]</span> and write a tailored proposal highlighting my React Native expertise and DVIR project as a reference."</> },
+        { text: <>"Summarize client messages in my active <span className="hl">[Contract Name]</span> contract and extract all pending action items as a checklist."</> },
+        { text: <>"Based on this Upwork project brief, create a technical scope with a realistic timeline and deliverable breakdown for a fixed-price bid."</> },
       ],
       useCase: {
-        icon: <LuRocket />,
+        icon: <LuFileText />,
         title: 'In my workflow',
-        text: <>For multi-file refactors (MapScreen, filterStore), Claude Code is the difference between <strong>2-hour sessions and 2-day sessions.</strong> Hand it the plan, watch it work.</>,
+        text: <>Proposals used to take 30 mins each. Claude reads the brief, drafts in under 5 minutes. I review and personalize. <strong>Total time: ~12 minutes. Win rate: up.</strong></>,
+      },
+    },
+  },
+  {
+    id: 'slack',
+    colorClass: 'cc-slack',
+    name: 'Slack',
+    status: 'Connected',
+    logoBg: 'linear-gradient(135deg,#4A154B,#E01E5A)',
+    logo: <SiSlack />,
+    description: 'Pull async decisions, blockers, and requirement discussions from channels directly into your planning context. No more scrolling back through 200 messages.',
+    tags: ['Thread Context', 'Async Decisions'],
+    detail: {
+      title: 'Slack × Claude',
+      tagline: 'Every async decision is searchable. Stop scrolling, start asking.',
+      steps: [
+        {
+          num: 1,
+          title: 'Connect',
+          text: 'Settings → Connectors → Slack → OAuth to your workspace. Claude can read channel messages and search across conversations.',
+          screen: (
+            <>
+              <span className="cmt">// Settings → Connectors</span><br />
+              <span className="acc">▸</span> Slack <span className="br">[Connect]</span>
+            </>
+          ),
+        },
+        {
+          num: 2,
+          title: 'Reference a channel or thread',
+          text: "Mention a channel name, paste a thread link, or describe what you're looking for. Claude searches and surfaces the right context.",
+          screen: (
+            <>
+              <span className="cmt">// Ask about:</span><br />
+              #engineering this week<br />
+              <span className="acc">thread/...</span> [paste link]
+            </>
+          ),
+        },
+        {
+          num: 3,
+          title: 'Extract & act',
+          text: 'Claude summarizes decisions, extracts action items, or drafts a thread update for your team — in plain English.',
+          screen: (
+            <>
+              <span className="cmt">// Output:</span><br />
+              <span className="acc">[ ]</span> decisions made<br />
+              <span className="acc">[ ]</span> my action items
+            </>
+          ),
+        },
+      ],
+      prompts: [
+        { text: <>"Search <span className="hl">#engineering</span> for all messages mentioning the <span className="hl">map clustering refactor</span> this week and summarize what was decided."</> },
+        { text: <>"Pull my outstanding action items from <span className="hl">#product</span> and <span className="hl">#mobile-team</span> and create a prioritized task list for today."</> },
+        { text: <>"Draft a Slack update for <span className="hl">#mobile-team</span> explaining today's DVIR refactor progress in non-technical terms suitable for a PM audience."</> },
+      ],
+      useCase: {
+        icon: <LuMessageSquare />,
+        title: 'In my workflow',
+        text: <>Before every standup, I ask Claude to pull my action items from Slack. Shows real blockers in 30 seconds. <strong>No more scrolling through 200 messages to find one decision.</strong></>,
+      },
+    },
+  },
+  {
+    id: 'monday',
+    colorClass: 'cc-monday',
+    name: 'Monday.com',
+    status: 'Connected',
+    logoBg: 'linear-gradient(135deg,#FF3D57,#FA7C3B)',
+    logo: <LuLayoutDashboard />,
+    description: 'Read board items, deadlines, and statuses. Use project scope from Monday as Phase 1 context and generate standup updates from your actual board data.',
+    tags: ['Board Context', 'Standup Prep'],
+    detail: {
+      title: 'Monday.com × Claude',
+      tagline: 'Your board is the source of truth. Let Claude read it.',
+      steps: [
+        {
+          num: 1,
+          title: 'Connect',
+          text: 'Settings → Connectors → Monday.com → OAuth. Claude gets read access to your boards, items, timelines, and status columns.',
+          screen: (
+            <>
+              <span className="cmt">// Settings → Connectors</span><br />
+              <span className="acc">▸</span> Monday.com <span className="br">[Connect]</span>
+            </>
+          ),
+        },
+        {
+          num: 2,
+          title: 'Reference a board or item',
+          text: 'Drop a board URL or describe the project. Claude reads statuses, deadlines, assignments, and column values directly.',
+          screen: (
+            <>
+              <span className="cmt">// Drop any of:</span><br />
+              monday.com/boards/...<br />
+              <span className="acc">or just name the board</span>
+            </>
+          ),
+        },
+        {
+          num: 3,
+          title: 'Plan from real data',
+          text: 'Claude generates standup summaries, priority-sorted task lists, or sprint scope estimates from actual board status — not your memory of it.',
+          screen: (
+            <>
+              <span className="cmt">// Output:</span><br />
+              <span className="acc">standup.md</span> generated<br />
+              <span className="br">3 overdue → triage</span>
+            </>
+          ),
+        },
+      ],
+      prompts: [
+        { text: <>"Read my <span className="hl">[Board Name]</span> in Monday and write today's standup update from the actual status of items assigned to me."</> },
+        { text: <>"Pull all overdue items from the <span className="hl">Mobile App Sprint</span> board and generate a priority-sorted plan.md with rough effort estimates."</> },
+        { text: <>"Check the timeline in my <span className="hl">Q3 Roadmap</span> board — is the current sprint on track given what's already overdue?"</> },
+      ],
+      useCase: {
+        icon: <LuKanban />,
+        title: 'In my workflow',
+        text: <>Before Phase 3 scoping, I pull the Monday board. Claude sees <strong>real statuses, not my memory of them.</strong> Estimates become defensible to PM immediately.</>,
       },
     },
   },
