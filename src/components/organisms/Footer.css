@@ -1,13 +1,13 @@
 footer {
   background: var(--surf);
-  padding: 36px 48px;
+  padding: var(--sp-20) var(--sp-24);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1.5px solid var(--surf4);
 }
 .footer-left .footer-brand {
-  font-size: 16px;
+  font-size: var(--fs-lg);
   font-weight: 800;
   color: var(--ink);
   letter-spacing: -.3px;
@@ -20,11 +20,11 @@ footer {
   background-clip: text;
 }
 .footer-left .footer-sub {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--ink4);
 }
 .footer-right {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   color: var(--ink4);
   text-align: right;
   font-family: 'JetBrains Mono', monospace;
@@ -35,7 +35,6 @@ footer {
   footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding: 28px 24px;
+    gap: var(--sp-8);
   }
 }

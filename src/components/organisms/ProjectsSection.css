@@ -6,7 +6,7 @@
   background: linear-gradient(180deg, var(--surf) 0%, var(--surf2) 100%);
   border: 1.5px solid var(--surf4);
   border-radius: 24px;
-  padding: 40px;
+  padding: var(--sp-20);
   display: flex;
   justify-content: center;
 }
@@ -70,6 +70,5 @@
 }
 
 @media (max-width: 900px) {
-  .proj-flow { padding: 24px 12px; }
   .pdi-metrics { grid-template-columns: 1fr 1fr; }
 }

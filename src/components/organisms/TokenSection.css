@@ -6,11 +6,11 @@
 .tok-hero {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
   border-radius: 24px;
-  padding: 48px;
-  margin-bottom: 32px;
+  padding: var(--sp-24);
+  margin-bottom: var(--sp-16);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: var(--sp-24);
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -32,7 +32,7 @@
   z-index: 1;
 }
 .tok-hero-eyebrow {
-  font-size: 11px;
+  font-size: var(--fs-xs);
   font-weight: 700;
   color: var(--cyan);
   text-transform: uppercase;
@@ -40,7 +40,7 @@
   margin-bottom: 14px;
 }
 .tok-hero-title {
-  font-size: 36px;
+  font-size: clamp(22px, 2.81vw, 36px);
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
@@ -48,14 +48,14 @@
   margin-bottom: 14px;
 }
 .tok-hero-title .pct {
-  font-size: 64px;
+  font-size: var(--fs-stat);
   background: linear-gradient(135deg, var(--cyan), var(--brand));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .tok-hero-sub {
-  font-size: 14.5px;
+  font-size: var(--fs-md);
   color: rgba(255, 255, 255, .6);
   line-height: 1.65;
   margin-bottom: 24px;
@@ -146,7 +146,7 @@
   z-index: 1;
 }
 .tok-circle-pct {
-  font-size: 64px;
+  font-size: var(--fs-stat);
   font-weight: 900;
   color: #fff;
   letter-spacing: -2px;
@@ -167,7 +167,7 @@
   background: linear-gradient(180deg, var(--surf2) 0%, var(--surf) 100%);
   border: 1.5px solid var(--surf4);
   border-radius: 24px;
-  padding: 36px 32px;
+  padding: var(--sp-20) var(--sp-16);
 }
 
 /* Modal detail content */
@@ -275,7 +275,6 @@
 .tc-5 { --tc: var(--purple); --tc-l: var(--purple-l); }
 
 @media (max-width: 900px) {
-  .tok-hero { grid-template-columns: 1fr; padding: 32px; }
+  .tok-hero { grid-template-columns: 1fr; }
   .tok-hero-right { display: none; }
-  .token-flow { padding: 24px 12px; }
 }
