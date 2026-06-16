@@ -67,7 +67,7 @@ export const projects: Project[] = [
     bannerTag: 'React Native',
     name: 'ePropertyPlus RN',
     client: 'Property management mobile app',
-    stack: ['RN', 'Cordova→RN', 'Fastlane', 'App Store'],
+    stack: ['RN', 'Cordova', 'Fastlane', 'App Store'],
     challenge: 'Legacy React/Cordova app migrating to React Native. Foundational API architecture, app store submissions for the client, and a clean ground-up pattern library to set the tone.',
     detail: {
       title: 'ePropertyPlus RN — Property Mgmt',
