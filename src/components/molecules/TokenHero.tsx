@@ -15,7 +15,7 @@ function AnimatedPercent({ value, visible, prefix = '' }: { value: number; visib
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (visible) motionValue.set(value);
+    motionValue.set(visible ? value : 0);
   }, [visible, value, motionValue]);
 
   useEffect(() => spring.on('change', (v) => setDisplay(Math.round(v))), [spring]);
@@ -24,7 +24,7 @@ function AnimatedPercent({ value, visible, prefix = '' }: { value: number; visib
 }
 
 export function TokenHero() {
-  const { ref, visible } = useReveal<HTMLDivElement>(0.2);
+  const { ref, visible } = useReveal<HTMLDivElement>(0.2, true);
 
   return (
     <div className={`tok-hero reveal ${visible ? 'visible' : ''}`.trim()} ref={ref}>
@@ -60,7 +60,7 @@ export function TokenHero() {
           <motion.div
             className="tok-circle-inner"
             initial={{ scale: 0.85, opacity: 0 }}
-            animate={visible ? { scale: 1, opacity: 1 } : {}}
+            animate={visible ? { scale: 1, opacity: 1 } : { scale: 0.85, opacity: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
           >
             <div className="tok-circle-pct"><AnimatedPercent value={30} visible={visible} prefix="~" /></div>

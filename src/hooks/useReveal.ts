@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Mirrors the original `.reveal` / IntersectionObserver fade-up behaviour:
- * once the element scrolls into view it becomes visible and stays that way.
+ * Tracks viewport visibility via IntersectionObserver.
+ * repeat=false (default): fires once and disconnects.
+ * repeat=true: stays active — visible toggles true/false as the element enters/exits.
  */
-export function useReveal<T extends HTMLElement>(threshold = 0.1) {
+export function useReveal<T extends HTMLElement>(threshold = 0.1, repeat = false) {
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -17,7 +18,9 @@ export function useReveal<T extends HTMLElement>(threshold = 0.1) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
-            observer.disconnect();
+            if (!repeat) observer.disconnect();
+          } else if (repeat) {
+            setVisible(false);
           }
         });
       },
@@ -26,7 +29,7 @@ export function useReveal<T extends HTMLElement>(threshold = 0.1) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, repeat]);
 
   return { ref, visible };
 }
